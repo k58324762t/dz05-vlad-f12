@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext } from 'react'
+import { MainPage } from './Page/main/MainPage'
+import { News } from './News/News'
+import './App.css'
+
+const NewsContext = React.createContext
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [news, setNews] = useState(false)
+
+	const newes = setNews(i => !i)
+
+	return (
+		<NewsContext.Provider value={news}>
+			<>
+				<MainPage news={newes} />
+				<News />
+			</>
+		</NewsContext.Provider>
+	)
 }
 
-export default App;
+export default App
